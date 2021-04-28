@@ -117,3 +117,16 @@ app.get("/search/:searchString", function (req, res) {
       res.send(err);
     });
 });
+
+app.get("/get-details/:uid", function (req, res) {
+  const uid = req.params.uid;
+  database
+    .getSongDetails(uid)
+    .then((song) => {
+      res.send(song);
+    })
+    .catch((err) => {
+      res.sendStatus(500);
+      console.log(err);
+    });
+});

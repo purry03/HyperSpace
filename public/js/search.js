@@ -22,7 +22,9 @@ function sendResults(results) {
   $(".search-results-container").html(" ");
   results.forEach((result) => {
     const resultTemplate =
-      '<div class="search-result"><img class="search-result-cover" src="/img/cover.jpg" /><div class="search-result-text"><h3 class="search-result-title">' +
+      '<div class="search-result" onclick="changeSong(\'' +
+      result.uid +
+      '\')"><img class="search-result-cover" src="/img/cover.jpg" /><div class="search-result-text"><h3 class="search-result-title">' +
       result.title +
       '</h3><h6 class="search-result-artist">' +
       result.artist +
@@ -38,7 +40,9 @@ $(".search-input").focusin(function () {
 });
 
 $(".search-input").focusout(function () {
-  collapseSearch();
+  if ($(".search-result").is(":focus")) {
+    collapseSearch();
+  }
 });
 
 function collapseSearch() {

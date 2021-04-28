@@ -74,3 +74,15 @@ module.exports.searchDb = (searchString) => {
       });
   });
 };
+
+module.exports.getSongDetails = (uid) => {
+  return new Promise((resolve, reject) => {
+    models.Song.findOne({ uid: uid })
+      .then((song) => {
+        resolve(song);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};

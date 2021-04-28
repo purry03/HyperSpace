@@ -26,11 +26,18 @@ function seekToStart() {
   player.currentTime = 0;
 }
 
-function changeSong() {
-  stop();
-  $("#player").attr("src", "/stream2");
-  seekToStart();
-  play();
+function changeSong(uid) {
+  console.log("/get-details/" + uid);
+  $.get("/get-details/" + uid, function (data) {
+    console.log(data);
+    $(".player-song-title").html(data.title);
+    $(".player-song-artist").html(data.artist);
+    collapseSearch();
+    stop();
+    $("#player").attr("src", "/stream/" + uid);
+    seekToStart();
+    play();
+  });
 }
 
 player.addEventListener("timeupdate", function () {
