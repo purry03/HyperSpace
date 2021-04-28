@@ -1,15 +1,20 @@
+const { captureRejectionSymbol } = require("events");
 const fs = require("fs");
 const path = require("path");
-const randomToken = require("random-token");
-const multer = require("multer");
+var mv = require("mv");
 
-module.exports.saveToFile = (req, file, cb) => {
-  console.log(req);
-  var dir = path.join(__basedir + "/data/" + req.body.uid);
-  fs.exists(dir, (exist) => {
-    if (!exist) {
-      return fs.mkdir(dir, (error) => cb(error, dir));
-    }
-    return cb(null, dir);
+module.exports.saveToFile = (req) => {
+  return new Promise((resolve, reject) => {
+    const { uid, title, artist, album, duration } = req.body;
+    const song = req.files.song;
+    const dest = path.join(__basedir + "/data/" + uid + "/song.mp3");
+    fs.mkdirSync(path.join(__basedir + "/data/" + uid));
+    mv(song.path, dest, function (err) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(true);
+      }
+    });
   });
 };
