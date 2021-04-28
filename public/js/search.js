@@ -36,18 +36,28 @@ function sendResults(results) {
 }
 
 $(".search-input").focusin(function () {
-  expandSource();
+  expandSearch();
 });
 
-$(".search-input").focusout(function (event) {
-  setTimeout(collapseSearch, 250);
-});
+// $(".search-input").focusout(function (event) {
+//   collapseSearch();
+// });
 
+$(document).mousedown(function (event) {
+  if (
+    $(event.target).hasClass("search") ||
+    $(event.target).hasClass("search-input")
+  ) {
+    //do nothing
+  } else {
+    collapseSearch();
+  }
+});
 function collapseSearch() {
   $(".search-results-container").css("max-height", "0");
 }
 
-function expandSource() {
+function expandSearch() {
   $(".search-results-container").css("max-height", "60vh");
 }
 

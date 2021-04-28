@@ -1,5 +1,4 @@
 function isElementOverflowing(element) {
-  console.log(element.getBoundingClientRect().width);
   if (element.scrollWidth > element.clientWidth) return true;
 }
 
