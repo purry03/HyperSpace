@@ -40,7 +40,7 @@ $(".search-input").focusin(function () {
 });
 
 $(".search-input").focusout(function (event) {
-  setTimeout(collapseSearch, 100);
+  setTimeout(collapseSearch, 250);
 });
 
 function collapseSearch() {
