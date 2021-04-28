@@ -277,9 +277,59 @@ h6 {
   transform: translateX(-20%);
 }
 
+.marquee-container {
+  min-width: 100%;
+}
+
+.marquee {
+  width: fit-content;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee h3,
+.marquee h6 {
+  -moz-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  -moz-animation: scroll-left 9s linear infinite;
+  -webkit-animation: scroll-left 9s linear infinite;
+  animation: scroll-left 9s linear infinite;
+}
+
+@-moz-keyframes scroll-left {
+  0% {
+    -moz-transform: translateX(100%);
+  }
+  100% {
+    -moz-transform: translateX(-100%);
+  }
+}
+
+@-webkit-keyframes scroll-left {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes scroll-left {
+  0% {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  100% {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
 .song .song-details-wrapper {
   color: #fff;
-
   position: absolute;
   top: 50%;
   left: 50%;
@@ -293,17 +343,20 @@ h6 {
 .song-details-text-wrapper {
   position: fixed;
   top: 25%;
+  width: 100%;
   padding: 5px;
-  font-size: 1.5em;
+  font-size: 1.1em;
 }
 
 .song .song-details-title {
   font-family: "Unica One", cursive;
   font-weight: 300;
+  white-space: nowrap;
 }
 .song .song-details-artist {
   font-weight: 300;
   letter-spacing: 0.05rem;
+  white-space: nowrap;
 }
 
 .overhead-container {
