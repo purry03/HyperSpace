@@ -22,11 +22,11 @@ function sendResults(results) {
   $(".search-results-container").html(" ");
   results.forEach((result) => {
     const resultTemplate =
-      '<div class="search-result" onclick="changeSong(\'' +
+      '<div class="search search-result" onclick="changeSong(\'' +
       result.uid +
-      '\')"><img class="search-result-cover" src="/img/cover.jpg" /><div class="search-result-text"><h3 class="search-result-title">' +
+      '\')"><img class="search search-result-cover" src="/img/cover.jpg" /><div class="search search-result-text"><h3 class="search search-result-title">' +
       result.title +
-      '</h3><h6 class="search-result-artist">' +
+      '</h3><h6 class="search search-result-artist">' +
       result.artist +
       "</h6></div></div>";
     $(".search-results-container").html(
@@ -39,10 +39,8 @@ $(".search-input").focusin(function () {
   expandSource();
 });
 
-$(".search-input").focusout(function () {
-  if ($(".search-result").is(":focus")) {
-    collapseSearch();
-  }
+$(".search-input").focusout(function (event) {
+  setTimeout(collapseSearch, 100);
 });
 
 function collapseSearch() {
