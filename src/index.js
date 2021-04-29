@@ -8,6 +8,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const multipart = require("connect-multiparty");
 const multipartMiddleware = multipart();
+const fastFolderSize = require("fast-folder-size");
 
 database.init();
 
@@ -130,4 +131,31 @@ app.get("/get-details/:uid", function (req, res) {
       res.sendStatus(500);
       console.log(err);
     });
+});
+
+app.get("/library", function (req, res) {
+  res.render("library.ejs");
+});
+
+app.get("/library-details", function (req, res) {
+  var response = {
+    size: 0,
+    songs: [],
+  };
+  fastFolderSize(__basedir + "/data/", (err, bytes) => {
+    if (err) {
+      res.sendStatus(500);
+      console.log(err);
+    }
+    response.size = Math.round(bytes / (1024 * 1024)).toString();
+    database
+      .getAllSongs()
+      .then((songs) => {
+        response.songs = songs;
+        res.send(response);
+      })
+      .catch((err) => {
+        res.sendStatus(500);
+      });
+  });
 });

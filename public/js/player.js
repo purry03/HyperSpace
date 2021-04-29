@@ -31,9 +31,7 @@ function seekToStart() {
 }
 
 function changeSong(uid) {
-  console.log("/get-details/" + uid);
   $.get("/get-details/" + uid, function (data) {
-    console.log(data);
     $(".player-song-title").html(data.title);
     $(".player-song-artist").html(data.artist);
     $(".main-container").css(
@@ -74,4 +72,9 @@ function secondsToTime(secs) {
   return (
     mins.toString().padStart(2, "0") + ":" + secs.toString().padStart(2, "0")
   );
+}
+
+function preloadImage(url) {
+  var img = new Image();
+  img.src = url;
 }

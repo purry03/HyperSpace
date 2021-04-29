@@ -86,3 +86,15 @@ module.exports.getSongDetails = (uid) => {
       });
   });
 };
+
+module.exports.getAllSongs = () => {
+  return new Promise((resolve, reject) => {
+    models.Song.find({})
+      .then((songs) => {
+        resolve(songs);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
