@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const textSearch = require("mongoose-partial-full-search");
 
 var models;
 
@@ -35,6 +36,7 @@ module.exports.init = () => {
       required: true,
     },
   });
+  songSchema.plugin(textSearch);
 
   songSchema.index({ title: "text", artist: "text", album: "text" });
 
@@ -65,12 +67,15 @@ module.exports.saveNew = (uid, title, artist, album, duration) => {
 
 module.exports.searchDb = (searchString) => {
   return new Promise((resolve, reject) => {
-    models.Song.find({ $text: { $search: searchString } })
-      .then((songs) => {
-        resolve(songs);
-      })
-      .catch((err) => {
-        reject(err);
+    const reg = new RegExp(searchString, "i");
+    models.Song.find()
+      .or([{ title: reg }, { artist: reg }, { album: reg }])
+      .exec(function (err, results) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results);
+        }
       });
   });
 };

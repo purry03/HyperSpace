@@ -5,6 +5,10 @@ const defaultResult =
 
 jQuery(".search-input").on("input", function () {
   searchText = $(".search-input").val();
+  if (searchText.length == 0) {
+    $(".search-results-container").html("");
+    return;
+  }
   $.get("/search/" + searchText, function (results) {
     if (results.length == 0) {
       sendDefaultResult();
