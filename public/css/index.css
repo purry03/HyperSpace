@@ -178,6 +178,8 @@ h6 {
   width: 90px;
   margin-right: 15px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .search-result-cover {

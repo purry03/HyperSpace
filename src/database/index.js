@@ -87,8 +87,7 @@ module.exports.getSongDetails = (uid) => {
                 console.log(err);
                 resolve({ song, accent: null });
               } else {
-                var response = { song: song, accent: palette.Vibrant._rgb };
-                resolve(response);
+                resolve({ song: song, accent: palette.Vibrant._rgb });
               }
             }
           );
