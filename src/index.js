@@ -13,7 +13,9 @@ database.init();
 
 global.__basedir = path.resolve(__dirname + "/../");
 
-app.use(express.static(__dirname + "/../public"));
+app.use("/", express.static(__basedir + "/public"));
+app.use("/data", express.static(__basedir + "/data"));
+
 app.use(
   bodyParser.urlencoded({
     extended: true,
@@ -48,8 +50,7 @@ app.post("/upload", multipartMiddleware, function (req, res) {
             req.body.uid,
             req.body.title,
             req.body.artist,
-            req.body.album,
-            req.body.duration
+            req.body.album
           )
           .then(() => {
             res.redirect("/upload");

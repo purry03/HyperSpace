@@ -31,10 +31,6 @@ module.exports.init = () => {
       type: String,
       required: false,
     },
-    duration: {
-      type: String,
-      required: true,
-    },
   });
   songSchema.plugin(textSearch);
 
@@ -44,14 +40,13 @@ module.exports.init = () => {
   models = { Song };
 };
 
-module.exports.saveNew = (uid, title, artist, album, duration) => {
+module.exports.saveNew = (uid, title, artist, album) => {
   return new Promise((resolve, reject) => {
     const toSave = models.Song({
       uid,
       title,
       artist,
       album,
-      duration,
     });
 
     toSave

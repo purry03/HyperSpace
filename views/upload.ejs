@@ -35,12 +35,12 @@
   <body>
     <div class="main-container">
       <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="song" />
+        <label>Song:<input type="file" name="song" /></label>
+        <label>Cover Art:<input type="file" name="cover" /></label>
         <input type="text" class="uid" name="uid" />
-        <input type="text" name="title" />
-        <input type="text" name="artist" />
-        <input type="text" name="album" />
-        <input type="text" name="duration" />
+        <input type="text" name="title" placeholder="title" />
+        <input type="text" name="artist" placeholder="artist" />
+        <input type="text" name="album" placeholder="album" />
         <button type="submit">Submit</button>
       </form>
     </div>
