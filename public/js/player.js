@@ -79,9 +79,13 @@ player.addEventListener("timeupdate", function () {
     );
 });
 
-$(document).on("keypress", function (e) {
+$("body").on("keypress", function (e) {
   if (e.which == 32) {
-    toggleState();
+    if ($("input").is(":focus")) {
+      return;
+    } else {
+      toggleState();
+    }
   }
 });
 
