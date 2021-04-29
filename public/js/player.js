@@ -1,4 +1,5 @@
 var player = document.getElementById("player");
+var hoverPercentage = 0;
 changeSong("d9q37ariyojueyswe4qx"), 500;
 
 function play() {
@@ -98,7 +99,31 @@ function secondsToTime(secs) {
   );
 }
 
-function preloadImage(url) {
-  var img = new Image();
-  img.src = url;
-}
+$(".progress-bar").mousemove(function (e) {
+  var parentOffset = $(".progress-bar").offset();
+  var parentWidth = $(".progress-bar").width();
+  //or $(this).offset(); if you really just want the current element's offset
+  var relX = e.pageX - parentOffset.left;
+  hoverPercentage = (relX / parentWidth) * 100;
+  if (hoverPercentage > 100) {
+    return;
+  }
+  $(".progress-bar-hover-slider ").width("5px");
+  $(".progress-bar-hover-slider ").css("left", hoverPercentage + "%");
+  $(".hover-timestamp").html(
+    secondsToTime(player.duration * (hoverPercentage / 100))
+  );
+});
+
+$(".progress-bar").mouseenter(function (e) {
+  $(".hover-timestamp").css("visibility", "visible");
+});
+
+$(".progress-bar").mouseleave(function (e) {
+  $(".progress-bar-hover-slider ").width(0);
+  $(".hover-timestamp").css("visibility", "hidden");
+});
+
+$(".progress-bar").click(function (e) {
+  player.currentTime = (player.duration * hoverPercentage) / 100;
+});
