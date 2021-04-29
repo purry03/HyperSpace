@@ -5,7 +5,7 @@ function insertInTable(songs) {
     }
     const row =
       "<tr><td>" +
-      i +
+      (i + 1) +
       "</td><td>" +
       song.title +
       "</td><td>" +
