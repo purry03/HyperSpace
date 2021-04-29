@@ -28,7 +28,9 @@ function sendResults(results) {
     const resultTemplate =
       '<div class="search search-result" onclick="changeSong(\'' +
       result.uid +
-      '\')"><img class="search search-result-cover" src="/img/cover.jpg" /><div class="search search-result-text"><h3 class="search search-result-title">' +
+      '\')"><img class="search search-result-cover" src="/data/' +
+      result.uid +
+      '/cover.png" /><div class="search search-result-text"><h3 class="search search-result-title">' +
       result.title +
       '</h3><h6 class="search search-result-artist">' +
       result.artist +
