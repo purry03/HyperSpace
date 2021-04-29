@@ -1,11 +1,11 @@
 function insertInTable(songs) {
-  songs.forEach((song) => {
+  songs.forEach((song, i) => {
     if (song.album == "") {
       song.album = "-";
     }
     const row =
       "<tr><td>" +
-      song.uid +
+      i +
       "</td><td>" +
       song.title +
       "</td><td>" +
