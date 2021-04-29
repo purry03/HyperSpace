@@ -32,12 +32,26 @@ function seekToStart() {
 
 function changeSong(uid) {
   $.get("/get-details/" + uid, function (data) {
-    $(".player-song-title").html(data.title);
-    $(".player-song-artist").html(data.artist);
+    $(".player-song-title").html(data.song.title);
+    $(".player-song-artist").html(data.song.artist);
     $(".main-container").css(
       "background-image",
-      "url(/data/" + data.uid + "/cover.png)"
+      "url(/data/" + data.song.uid + "/cover.png)"
     );
+    if (data.accent != null) {
+      $(".progress-bar-slider").css(
+        "background-color",
+        "rgb(" +
+          data.accent[0] +
+          "," +
+          data.accent[1] +
+          "," +
+          data.accent[2] +
+          ")"
+      );
+    } else {
+      $(".progress-bar-slider").css("background-color", "#e22849");
+    }
     collapseSearch();
     stop();
     $("#player").attr("src", "/stream/" + uid);
@@ -63,6 +77,12 @@ player.addEventListener("timeupdate", function () {
       250,
       "linear"
     );
+});
+
+$(document).on("keypress", function (e) {
+  if (e.which == 32) {
+    toggleState();
+  }
 });
 
 function secondsToTime(secs) {

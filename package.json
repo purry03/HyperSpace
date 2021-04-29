@@ -20,6 +20,7 @@
     "mongoose-text-search": "0.0.2",
     "multer": "^1.4.2",
     "mv": "^2.1.1",
+    "node-vibrant": "^3.2.1-alpha.1",
     "random-keygen": "^1.0.4",
     "random-token": "0.0.8"
   }

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const textSearch = require("mongoose-partial-full-search");
+const Vibrant = require("node-vibrant");
 
 var models;
 
@@ -79,7 +80,21 @@ module.exports.getSongDetails = (uid) => {
   return new Promise((resolve, reject) => {
     models.Song.findOne({ uid: uid })
       .then((song) => {
-        resolve(song);
+        try {
+          Vibrant.from(__basedir + "/data/" + uid + "/cover.png").getPalette(
+            (err, palette) => {
+              if (err) {
+                console.log(err);
+                resolve({ song, accent: null });
+              } else {
+                var response = { song: song, accent: palette.Vibrant._rgb };
+                resolve(response);
+              }
+            }
+          );
+        } catch (except) {
+          resolve({ song, accent: null });
+        }
       })
       .catch((err) => {
         reject(err);
