@@ -93,8 +93,12 @@
 
             <div class="user-buttons-container">
               <img src="/img/expand.svg" onclick="toggleNavState()" class="nav-control-button">
-              <button class="btn signup-btn">Sign Up</button>
-              <button class="btn login-btn">Log In</button>
+              <% if(typeof user == 'undefined'){%>
+              <a href="/auth/spotify"> <button class="btn login-btn">Log In</button></a>
+              <%}%>
+              <% if(typeof user != 'undefined'){%>
+                <a href="/profile"> <button class="btn user-btn"><%=user.name%></button></a>
+              <%}%>
             </div>
           </div>
           <div class="song-list-parent">
@@ -230,7 +234,7 @@
                   </div>
                 </div>
               </div>
-              <h6 class="duration">01:30</h6>
+              <h6 class="duration">00:00</h6>
             </div>
             <div class="info-container">
               <h6>Up Next : White Flag - Delta Heavy</h6>

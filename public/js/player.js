@@ -33,6 +33,7 @@ function seekToStart() {
 
 function changeSong(uid) {
   $.get("/get-details/" + uid, function (data) {
+    collapseSearch();
     $(".player-song-title").html(data.song.title);
     $(".player-song-artist").html(data.song.artist);
     $(".main-container").css(
@@ -53,7 +54,6 @@ function changeSong(uid) {
     } else {
       $(".progress-bar-slider").css("background-color", "#e22849");
     }
-    collapseSearch();
     stop();
     $("#player").attr("src", "/stream/" + uid);
     seekToStart();
@@ -61,7 +61,10 @@ function changeSong(uid) {
   });
 }
 
+
+
 player.addEventListener("timeupdate", function () {
+  $(".progress-bar").removeClass("progress-bar-buffering");
   var currentTime = player.currentTime;
   $(".current-time").html(secondsToTime(currentTime));
   var duration = player.duration;
@@ -79,6 +82,10 @@ player.addEventListener("timeupdate", function () {
       "linear"
     );
 });
+
+
+
+
 
 $("body").on("keypress", function (e) {
   if (e.which == 32) {

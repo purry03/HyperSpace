@@ -1,4 +1,5 @@
 const express = require("express");
+const session = require("express-session");
 const app = express();
 const ejs = require("ejs");
 const database = require("./database");
@@ -9,6 +10,31 @@ const bodyParser = require("body-parser");
 const multipart = require("connect-multiparty");
 const multipartMiddleware = multipart();
 const fastFolderSize = require("fast-folder-size");
+const passport = require("passport");
+const SpotifyStrategy = require("passport-spotify").Strategy;
+
+passport.serializeUser(function (user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function (obj, done) {
+  done(null, obj);
+});
+
+passport.use(
+  new SpotifyStrategy(
+    {
+      clientID: "a4c364b453584a8390dc2a49434f7d43",
+      clientSecret: "beea81b5029f48579c2cd371df462ab6",
+      callbackURL: "http://localhost/auth/spotify/callback",
+    },
+    function (accessToken, refreshToken, expires_in, profile, done) {
+      database.saveNewUser(profile, function (err, user) {
+        return done(err, user);
+      });
+    }
+  )
+);
 
 database.init();
 
@@ -25,6 +51,14 @@ app.use(
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/../views"));
 
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+);
+// Initialize Passport!  Also use passport.session() middleware, to support
+// persistent login sessions (recommended).
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.listen(80, function (err) {
   if (err) {
     console.log(err);
@@ -34,8 +68,24 @@ app.listen(80, function (err) {
 });
 
 app.get("/", function (req, res) {
-  res.render("index.ejs");
+  res.render("index.ejs", { user: req.user });
 });
+app.get(
+  "/auth/spotify",
+  passport.authenticate("spotify", {
+    scope: ["user-read-email", "user-read-private"],
+    showDialog: true,
+  })
+);
+
+app.get(
+  "/auth/spotify/callback",
+  passport.authenticate("spotify", { failureRedirect: "/auth/spotify" }),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("/");
+  }
+);
 
 app.get("/upload", function (req, res) {
   res.render("upload.ejs");

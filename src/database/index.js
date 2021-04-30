@@ -37,8 +37,20 @@ module.exports.init = () => {
 
   songSchema.index({ title: "text", artist: "text", album: "text" });
 
+  const userSchema = new mongoose.Schema({
+    uid: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    name: {
+      type: String,
+    },
+  });
+
+  const User = db.model("User", userSchema);
   const Song = db.model("Song", songSchema);
-  models = { Song };
+  models = { Song, User };
 };
 
 module.exports.saveNew = (uid, title, artist, album) => {
@@ -110,5 +122,37 @@ module.exports.getAllSongs = () => {
       .catch((err) => {
         reject(err);
       });
+  });
+};
+
+module.exports.saveNewUser = (profile, cb) => {
+  models.User.findOne(
+    {
+      uid: profile.id,
+    },
+    function (err, user) {
+      if (err) {
+        cb(err, null);
+      }
+      if (!user) {
+        user = new models.User({
+          uid: profile.id,
+          name: profile.displayName,
+        });
+        user.save(function (err) {
+          if (err) console.log(err);
+          cb(err, user);
+        });
+      } else {
+        //found user. Return
+        cb(err, user);
+      }
+    }
+  );
+};
+
+module.exports.findUserById = (id, cb) => {
+  models.User.findOne({ uid: id }, function (err, user) {
+    cb(err, user);
   });
 };
