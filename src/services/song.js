@@ -30,14 +30,12 @@ module.exports.saveNew = (uid, title, artist, album) => {
 };
 
 module.exports.searchDb = (searchString) => {
-  const start = new Date();
   return new Promise((resolve, reject) => {
     const reg = new RegExp(searchString, "i");
     models.Song.find()
       .or([{ title: reg }, { artist: reg }, { album: reg }])
       .cache(120)
       .exec(function (err, results) {
-        console.log(new Date() - start);
         if (err) {
           reject(err);
         } else {
@@ -50,7 +48,7 @@ module.exports.searchDb = (searchString) => {
 module.exports.getSongDetails = (uid) => {
   return new Promise((resolve, reject) => {
     modelLoader.models.Song.findOne({ uid: uid })
-      .cache(60)
+      .cache(3600)
       .then((song) => {
         try {
           Vibrant.from(__basedir + "/data/" + uid + "/cover.png").getPalette(
