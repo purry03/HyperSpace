@@ -69,14 +69,14 @@ function play() {
   if (player.paused) {
     return;
   } else {
-    $("#play-btn").attr("src", "/img/pause.svg");
+    $("#play-btn").attr("src", "/static/img/pause.svg");
     isPlaying = true;
   }
 }
 
 function pause() {
   player.pause();
-  $("#play-btn").attr("src", "/img/play.svg");
+  $("#play-btn").attr("src", "/static/img/play.svg");
   isPlaying = false;
 }
 

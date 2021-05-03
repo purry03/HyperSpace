@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use("/", express.static(__basedir + "/public"));
+app.use("/static", express.static(__basedir + "/public"));
 app.use("/data", express.static(__basedir + "/data"));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);

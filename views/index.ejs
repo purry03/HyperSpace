@@ -18,19 +18,19 @@
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="/stylesheets/index.css"
+      href="/static/stylesheets/index.css"
     />
     <link
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="/stylesheets/scrollbar.css"
+      href="/static/stylesheets/scrollbar.css"
     />
     <link
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="/stylesheets/progress.css"
+      href="/static/stylesheets/progress.css"
     />
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -51,7 +51,7 @@
     <div class="main-container">
       <div class="navigation-container">
         <div class="side-bar-container">
-          <img class="side-bar-logo" src="/img/logo.png" />
+          <img class="side-bar-logo" src="/static/img/logo.png" />
           <button class="side-bar-btn">
             Liked <i class="fas fa-heart"></i>
           </button>
@@ -86,7 +86,7 @@
             </div>
 
             <div class="user-buttons-container">
-              <img src="/img/expand.svg" onclick="toggleNavState()" class="nav-control-button">
+              <img src="/static/img/expand.svg" onclick="toggleNavState()" class="nav-control-button">
               <% if(typeof user == 'undefined'){%>
               <a href="/auth/spotify"> <button class="btn login-btn">Log In</button></a>
               <%}%>
@@ -109,7 +109,7 @@
                     </div>
                   </div>
                   <div class="song-cover-wrapper">
-                    <img class="song-cover" src="/img/cover.jpg" />
+                    <img class="song-cover" src="/static/img/cover.jpg" />
                   </div>
                 </div>
                 <div class="song">
@@ -122,7 +122,7 @@
                     </div>
                   </div>
                   <div class="song-cover-wrapper">
-                    <img class="song-cover" src="/img/cover.jpg" />
+                    <img class="song-cover" src="/static/img/cover.jpg" />
                   </div>
                 </div>
                 <div class="song">
@@ -137,7 +137,7 @@
                     </div>
                   </div>
                   <div class="song-cover-wrapper">
-                    <img class="song-cover" src="/img/cover.jpg" />
+                    <img class="song-cover" src="/static/img/cover.jpg" />
                   </div>
                 </div>
                 <div class="song">
@@ -152,7 +152,7 @@
                     </div>
                   </div>
                   <div class="song-cover-wrapper">
-                    <img class="song-cover" src="/img/cover.jpg" />
+                    <img class="song-cover" src="/static/img/cover.jpg" />
                   </div>
                 </div>
                 <div class="song">
@@ -167,7 +167,7 @@
                     </div>
                   </div>
                   <div class="song-cover-wrapper">
-                    <img class="song-cover" src="/img/cover.jpg" />
+                    <img class="song-cover" src="/static/img/cover.jpg" />
                   </div>
                 </div>
                 <div class="song">
@@ -182,7 +182,7 @@
                     </div>
                   </div>
                   <div class="song-cover-wrapper">
-                    <img class="song-cover" src="/img/cover.jpg" />
+                    <img class="song-cover" src="/static/img/cover.jpg" />
                   </div>
                 </div>
                 <div class="song">
@@ -197,7 +197,7 @@
                     </div>
                   </div>
                   <div class="song-cover-wrapper">
-                    <img class="song-cover" src="/img/cover.jpg" />
+                    <img class="song-cover" src="/static/img/cover.jpg" />
                   </div>
                 </div>
 
@@ -214,9 +214,9 @@
           <div class="player-container">
             <audio src="/stream/3crtycsfpxu81birqqgai" id="player"></audio>
             <div class="controls-container">
-              <img onclick="seekToStart()" src="/img/previous.svg" />
-              <img onclick="toggleState()" src="/img/play.svg" id="play-btn" />
-              <img onclick="changeSong()" src="/img/next.svg" />
+              <img onclick="seekToStart()" src="/static/img/previous.svg" />
+              <img onclick="toggleState()" src="/static/img/play.svg" id="play-btn" />
+              <img onclick="changeSong()" src="/static/img/next.svg" />
             </div>
 
             <div class="progress-bar-container">
@@ -238,11 +238,11 @@
         </div>
       </div>
     </div>
-    <script src="/javascripts/player.js" defer></script>
-    <script src="/javascripts/navigation.js" defer></script>
-    <script src="/javascripts/search.js" defer></script>
-    <script src="/javascripts/scroll.js" defer></script>
-    <script src="/javascripts/marquee.js" defer></script>
+    <script src="/static/javascripts/player.js"></script>
+    <script src="/static/javascripts/navigation.js"></script>
+    <script src="/static/javascripts/search.js"></script>
+    <script src="/static/javascripts/scroll.js" defer></script>
+    <script src="/static/javascripts/marquee.js" defer></script>
     <!-- <script src="/js/mediasession.js" defer></script> -->
   </body>
 </html>

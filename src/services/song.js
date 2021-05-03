@@ -30,12 +30,14 @@ module.exports.saveNew = (uid, title, artist, album) => {
 };
 
 module.exports.searchDb = (searchString) => {
+  const start = new Date();
   return new Promise((resolve, reject) => {
     const reg = new RegExp(searchString, "i");
     models.Song.find()
       .or([{ title: reg }, { artist: reg }, { album: reg }])
-      .cache(30)
+      .cache(120)
       .exec(function (err, results) {
+        console.log(new Date() - start);
         if (err) {
           reject(err);
         } else {
