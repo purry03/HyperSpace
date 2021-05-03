@@ -1,0 +1,488 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+h1,
+h6 {
+  font-family: "Unica One", cursive;
+  color: #eee;
+}
+
+h3,
+h4,
+h5,
+input {
+  font-family: "Oxygen", sans-serif;
+}
+
+h6 {
+  font-weight: 300;
+}
+
+.space-div {
+  display: block;
+  height: 25px;
+  width: 100%;
+}
+
+.btn {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.33);
+  border: #eee solid 1px;
+  font-family: "Oxygen", sans-serif;
+  color: #eee;
+  padding: 0 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.main-container {
+  position: relative;
+  height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  background-color: #000;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-y: hidden;
+  -webkit-transition: background-image 0.2s ease-in-out;
+  transition: background-image 0.2s ease-in-out;
+}
+
+.navigation-container {
+  display: flex;
+  align-items: center;
+  height: 10%;
+  width: 100%;
+  padding-top: 5px;
+  background-color: rgba(0, 0, 0, 0.95);
+  transition: height 0.35s;
+  overflow: hidden;
+  box-sizing: content-box;
+}
+
+.side-bar-container {
+  height: 100%;
+  width: 20%;
+  text-align: center;
+}
+
+.side-bar-logo {
+  /* padding: 5px 0; */
+  height: 10vh;
+}
+
+.side-bar-btn {
+  width: 66%;
+  margin-top: 50px;
+  padding: 10px 15px;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  font-family: "Unica One", cursive;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 15px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.15s;
+}
+
+.side-bar-btn:hover {
+  background-color: rgba(255, 255, 255, 0.666);
+}
+
+.main-navigation-container {
+  width: 80%;
+  height: 100%;
+  padding-bottom: 50px;
+}
+
+.search-container {
+  width: 100%;
+  height: 10vh;
+  position: relative;
+}
+
+.search-container-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.search-input {
+  height: 5vh;
+  width: 50vw;
+  background-color: rgba(0, 0, 0, 0.33);
+  border: #eee solid 1px;
+  outline: none;
+  color: #eee;
+  border-radius: 5px 0 0 5px;
+  padding: 0 10px;
+}
+
+.search-btn {
+  height: 5vh;
+  border-radius: 0 5px 5px 0;
+}
+
+.search-results-container {
+  position: fixed;
+  top: 8.5vh;
+  background-color: rgba(0, 0, 0, 0.95);
+  height: fit-content;
+  max-height: 0;
+  width: 50vw;
+  z-index: 999;
+  border-radius: 0 0 5px 5px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.search-result-default {
+  margin: 20px 0;
+  color: #eee;
+  text-align: center;
+  font-family: "Unica One", cursive;
+}
+
+.search-result {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  margin: 20px 0;
+  padding: 5px 15px;
+  cursor: pointer;
+  background-color: transparent;
+  color: #eee;
+  transition: background-color 0.25s;
+  box-sizing: content-box;
+}
+
+.search-result:hover {
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #000 !important;
+}
+
+.search-result-cover-wrapper {
+  height: 50px;
+  width: 90px;
+  margin-right: 15px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.search-result-cover {
+  display: inline-block;
+  width: 100%;
+}
+
+.search-result-text {
+  display: inline-block;
+}
+
+.search-result-title {
+  font-family: "Unica One", cursive;
+}
+
+.search-result-artist {
+  font-family: "Oxygen", sans-serif;
+  color: inherit;
+}
+
+.user-buttons-container {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  padding-top: 5px;
+  top: 2.5vh;
+  right: 25px;
+  z-index: 3;
+}
+
+.nav-control-button {
+  height: 3vh;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.user-btn {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 0.6rem;
+  height: 5vh;
+  text-transform: uppercase;
+  transition: color 0.5s;
+  transition: background-color 0.5s;
+  letter-spacing: 0.1rem;
+}
+
+.user-btn:hover {
+  color: #000;
+  background-color: #fff;
+}
+
+.login-btn {
+  margin-left: 10px;
+  background-color: #fff;
+  color: #000;
+  font-weight: 700;
+  font-size: 0.6rem;
+  height: 5vh;
+  border-radius: 15px;
+  text-transform: uppercase;
+}
+
+.song-list-parent {
+  width: 100%;
+  padding-right: 15px;
+}
+
+.song-list-container {
+  width: 100%;
+  margin-top: 50px;
+  overflow-x: hidden;
+}
+
+.song-list-title {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 300;
+  letter-spacing: 0.15rem;
+}
+
+.song-list-wrapper {
+  display: flex;
+  justify-content: left;
+  margin-top: 10px;
+  height: auto;
+  width: 100%;
+  padding-bottom: 5px;
+  overflow-x: auto;
+}
+
+.song {
+  position: relative;
+  height: 150px;
+  min-width: 150px;
+  margin-right: 20px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.song .song-cover-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+}
+
+.song .song-cover {
+  height: 100%;
+  transform: translateX(-20%);
+}
+
+.marquee-container {
+  min-width: 100%;
+}
+
+.marquee {
+  width: fit-content;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee h3,
+.marquee h6 {
+  -moz-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  -moz-animation: scroll-left 9s linear infinite;
+  -webkit-animation: scroll-left 9s linear infinite;
+  animation: scroll-left 9s linear infinite;
+}
+
+@-moz-keyframes scroll-left {
+  0% {
+    -moz-transform: translateX(100%);
+  }
+  100% {
+    -moz-transform: translateX(-100%);
+  }
+}
+
+@-webkit-keyframes scroll-left {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes scroll-left {
+  0% {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  100% {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+.song .song-details-wrapper {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 1;
+}
+
+.song-details-text-wrapper {
+  position: fixed;
+  top: 25%;
+  width: 100%;
+  padding: 5px;
+  font-size: 1.1em;
+}
+
+.song .song-details-title {
+  font-family: "Unica One", cursive;
+  font-weight: 300;
+  white-space: nowrap;
+}
+.song .song-details-artist {
+  font-weight: 300;
+  letter-spacing: 0.05rem;
+  white-space: nowrap;
+}
+
+.overhead-container {
+  position: relative;
+  height: 30%;
+  width: 100%;
+  padding: 25px 0;
+  color: #eee;
+  background-color: rgba(0, 0, 0, 0.66);
+  text-align: center;
+}
+
+.overhead-container-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+.overhead-container h3 {
+  font-size: 0.75rem;
+  letter-spacing: 0.2rem;
+  font-weight: 300;
+}
+
+.controls-container {
+  margin: 15px 0;
+  height: 20px;
+  width: 100%;
+}
+
+.controls-container img {
+  height: 85%;
+  margin: 0 25px;
+  cursor: pointer;
+}
+
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.progress-bar-container h6 {
+  display: inline-block;
+}
+
+.progress-bar {
+  position: relative;
+  margin: 0 10px;
+  width: 66%;
+  background-color: white;
+  height: 10px;
+  cursor: pointer;
+}
+
+.progress-bar-buffering {
+  animation-name: bufferAnim;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bufferAnim {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.33;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.progress-bar-hover-slider {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  height: 10px;
+  z-index: 1;
+  background-color: transparent;
+}
+
+.hover-timestamp-container {
+  transform: translate(-175%, -125%);
+  z-index: 10;
+  visibility: hidden;
+}
+
+.progress-bar-slider {
+  width: 0;
+  background: #e22849;
+  height: 100%;
+  z-index: 5;
+}
+
+.info-container {
+  margin-top: 10px;
+  height: fit-content;
+  width: 100%;
+}
+
+.info-container h6 {
+  font-family: "Oxygen", sans-serif;
+}

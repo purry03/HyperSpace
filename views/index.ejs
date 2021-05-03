@@ -18,25 +18,19 @@
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="/css/index.css"
+      href="/stylesheets/index.css"
     />
     <link
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="/css/fonts.css"
+      href="/stylesheets/scrollbar.css"
     />
     <link
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="/css/scrollbar.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="/css/progress.css"
+      href="/stylesheets/progress.css"
     />
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -215,8 +209,8 @@
       </div>
       <div class="overhead-container">
         <div class="overhead-container-content">
-          <h1 class="player-song-title">Windfall</h1>
-          <h3 class="player-song-artist">TheFatRat</h3>
+          <h1 class="player-song-title">Nothing Playing</h1>
+          <h3 class="player-song-artist">-</h3>
           <div class="player-container">
             <audio src="/stream/3crtycsfpxu81birqqgai" id="player"></audio>
             <div class="controls-container">
@@ -224,6 +218,7 @@
               <img onclick="toggleState()" src="/img/play.svg" id="play-btn" />
               <img onclick="changeSong()" src="/img/next.svg" />
             </div>
+
             <div class="progress-bar-container">
               <h6 class="current-time">00:00</h6>
               <div class="progress-bar">
@@ -243,11 +238,11 @@
         </div>
       </div>
     </div>
-    <script src="/js/player.js" defer></script>
-    <script src="/js/navigation.js" defer></script>
-    <script src="/js/search.js" defer></script>
-    <script src="/js/scroll.js" defer></script>
-    <script src="/js/marquee.js" defer></script>
+    <script src="/javascripts/player.js" defer></script>
+    <script src="/javascripts/navigation.js" defer></script>
+    <script src="/javascripts/search.js" defer></script>
+    <script src="/javascripts/scroll.js" defer></script>
+    <script src="/javascripts/marquee.js" defer></script>
     <!-- <script src="/js/mediasession.js" defer></script> -->
   </body>
 </html>

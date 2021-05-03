@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+h1,
+h6 {
+  font-family: "Unica One", cursive;
+  color: #eee;
+}
+
+h3,
+h4,
+h5,
+input {
+  font-family: "Oxygen", sans-serif;
+  color: #eee;
+}
+
+.nav-container {
+  height: 10vh;
+  width: 100%;
+  padding: 0 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.95);
+}
+
+.logo-container {
+  height: 100%;
+}
+
+.logo-container img {
+  height: 100%;
+}
+
+.web-player-button-container {
+  height: 100%;
+  width: 66%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-buttons-container {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-10px, -50%);
+}
+
+.btn {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.33);
+  border: #eee solid 1px;
+  font-family: "Oxygen", sans-serif;
+  color: #eee;
+  padding: 0 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.web-player-btn {
+  margin-left: 10px;
+  background-color: #fff;
+  color: #000;
+  font-weight: 700;
+  font-size: 0.6rem;
+  height: 5vh;
+  border-radius: 15px;
+  padding: 15px 40px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.signup-btn {
+  background-color: transparent;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.6rem;
+  height: 5vh;
+  border: none;
+  text-transform: uppercase;
+}
+
+.login-btn {
+  margin-left: 10px;
+  background-color: #fff;
+  color: #000;
+  font-weight: 700;
+  font-size: 0.6rem;
+  height: 5vh;
+  border-radius: 15px;
+  text-transform: uppercase;
+}
+
+.main-container {
+  min-height: 90vh;
+  height: fit-content;
+}
+
+.main-container {
+  background: url(/img/bg-logo.png) rgba(0, 0, 0, 0.9);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 25px;
+}
+
+.main-heading {
+  margin-bottom: 25px;
+  font-family: 300;
+}
+
+.info-text {
+  font-weight: 300;
+  margin: 25px 0;
+}
+
+.info-number {
+  font-weight: 700;
+}
+
+table {
+  width: 100%;
+  font-family: "Oxygen", sans-serif;
+  color: #eee;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  border-collapse: collapse;
+}
+
+td,
+th,
+tr {
+  padding: 10px;
+  border: #ccc 1px solid;
+  border-width: 1px 0;
+}
