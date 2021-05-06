@@ -14,30 +14,57 @@ router.get("/upload", function (req, res, next) {
 });
 
 router.post("/upload", multipartMiddleware, function (req, res) {
-  services.song
-    .saveToFile(req)
-    .then((done) => {
-      if (done) {
-        services.song
-          .saveNew(
-            req.body.uid,
-            req.body.title,
-            req.body.artist,
-            req.body.album
-          )
-          .then(() => {
-            res.redirect("/admin/upload");
-          })
-          .catch((err) => {
-            console.log(err);
-            res.send(err);
-          });
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-      res.send(err);
-    });
+  if (req.body.youtubeLink.toString().length > 0) {
+    services.song
+      .saveToFileFromYoutube(req)
+      .then((done) => {
+        if (done) {
+          services.song
+            .saveNew(
+              req.body.uid,
+              req.body.title,
+              req.body.artist,
+              req.body.album
+            )
+            .then(() => {
+              res.redirect("/admin/upload");
+            })
+            .catch((err) => {
+              console.log(err);
+              res.send(err);
+            });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(err);
+      });
+  } else {
+    services.song
+      .saveToFile(req)
+      .then((done) => {
+        if (done) {
+          services.song
+            .saveNew(
+              req.body.uid,
+              req.body.title,
+              req.body.artist,
+              req.body.album
+            )
+            .then(() => {
+              res.redirect("/admin/upload");
+            })
+            .catch((err) => {
+              console.log(err);
+              res.send(err);
+            });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(err);
+      });
+  }
 });
 
 router.get("/info", function (req, res) {

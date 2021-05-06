@@ -35,7 +35,7 @@
     <div class="main-container">
       <h1>Upload</h1>
       <form action="/admin/upload" method="post" enctype="multipart/form-data">
-        <label>Song:<input type="file" name="song" required /></label>
+        <label>Song:<input type="file" name="song" /></label>
 
         <div id="status"></div>
         <label>Cover Art:<input type="file" name="cover" /></label>
@@ -44,11 +44,10 @@
           class="uid"
           name="uid"
           style="visibility: hidden; position: absolute"
-          required
         />
         <input type="text" name="title" placeholder="title" required />
         <input type="text" name="artist" placeholder="artist" required />
-        <input type="text" name="album" placeholder="album" required />
+        <input type="text" name="album" placeholder="album" />
         <div class="progress-container">
           <h3>Upload Progress</h3>
           <div class="progress">

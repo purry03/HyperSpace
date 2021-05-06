@@ -26,6 +26,10 @@ body {
   width: 50%;
 }
 
+.youtube-link {
+  width: 100% !important;
+}
+
 .main-container input {
   padding: 10px;
   outline: none;
