@@ -18,6 +18,7 @@
     "mongoose": "^5.12.7",
     "mongoose-partial-full-search": "0.0.6",
     "morgan": "~1.9.1",
+    "mv": "^2.1.1",
     "node-vibrant": "^3.2.1-alpha.1",
     "passport": "^0.4.1",
     "passport-spotify": "^2.0.0",

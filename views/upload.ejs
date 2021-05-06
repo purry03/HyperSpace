@@ -18,32 +18,48 @@
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="/css/upload.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="/css/fonts.css"
+      href="/static/stylesheets/upload.css"
     />
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"
+      integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="main-container">
-      <form action="/upload" method="post" enctype="multipart/form-data">
-        <label>Song:<input type="file" name="song" /></label>
+      <h1>Upload</h1>
+      <form action="/admin/upload" method="post" enctype="multipart/form-data">
+        <label>Song:<input type="file" name="song" required /></label>
+
+        <div id="status"></div>
         <label>Cover Art:<input type="file" name="cover" /></label>
-        <input type="text" class="uid" name="uid" />
-        <input type="text" name="title" placeholder="title" />
-        <input type="text" name="artist" placeholder="artist" />
-        <input type="text" name="album" placeholder="album" />
+        <input
+          type="text"
+          class="uid"
+          name="uid"
+          style="visibility: hidden; position: absolute"
+          required
+        />
+        <input type="text" name="title" placeholder="title" required />
+        <input type="text" name="artist" placeholder="artist" required />
+        <input type="text" name="album" placeholder="album" required />
+        <div class="progress-container">
+          <h3>Upload Progress</h3>
+          <div class="progress">
+            <div class="bar"></div>
+          </div>
+          <div class="percent">0%</div>
+        </div>
         <button type="submit">Submit</button>
       </form>
     </div>
-    <script src="/js/uid.js"></script>
+    <script src="/static/javascripts/uid.js"></script>
+    <script src="/static/javascripts/upload.js"></script>
   </body>
 </html>

@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: "Oxygen", sans-serif;
+}
+
+.main-container {
+  margin: 0 auto;
+  padding: 20px;
+  width: 66%;
+}
+
+.main-container h1 {
+  margin: 25px 0;
+}
+
+.main-container label,
+.main-container input {
+  display: block;
+  margin: 15px 0;
+  width: 50%;
+}
+
+.main-container input {
+  padding: 10px;
+  outline: none;
+}
+
+.main-container button {
+  padding: 5px 20px;
+}
+
+.progress-container {
+  width: 66%;
+  margin: 15px 0;
+  background-color: #222;
+  padding: 15px 10px;
+}
+
+.progress-container h3 {
+  margin: 10px 0;
+}
+
+.progress {
+  height: 10px;
+  width: 100%;
+  background-color: #fff;
+}
+
+.bar {
+  height: 100%;
+  width: 0%;
+  background-color: aqua;
+}
+
+.percent {
+  margin-top: 10px;
+}

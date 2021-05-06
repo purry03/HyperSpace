@@ -5,7 +5,7 @@ var cookieParser = require("cookie-parser");
 var favicon = require("serve-favicon");
 var logger = require("morgan");
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+var adminRouter = require("./routes/admin");
 
 var database = require("./database");
 var models = require("./models");
@@ -31,7 +31,7 @@ app.use(cookieParser());
 app.use("/static", express.static(__basedir + "/public"));
 app.use("/data", express.static(__basedir + "/data"));
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/admin", adminRouter);
 
 app.use(favicon(__basedir + "/public/img/favicon.ico"));
 

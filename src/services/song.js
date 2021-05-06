@@ -2,7 +2,9 @@ const Vibrant = require("node-vibrant");
 var mongoose = require("mongoose");
 var cachegoose = require("recachegoose");
 const modelLoader = require("../models");
-
+const fs = require("fs");
+const path = require("path");
+var mv = require("mv");
 cachegoose(mongoose, {
   engine: "redis",
   port: 6379,
@@ -80,5 +82,29 @@ module.exports.getAllSongs = () => {
       .catch((err) => {
         reject(err);
       });
+  });
+};
+
+module.exports.saveToFile = (req) => {
+  return new Promise((resolve, reject) => {
+    const { uid, title, artist, album, duration } = req.body;
+    const { song, cover } = req.files;
+    const songDest = path.join(__basedir + "/data/" + uid + "/song.mp3");
+    const coverDest = path.join(__basedir + "/data/" + uid + "/cover.png");
+    fs.mkdirSync(path.join(__basedir + "/data/" + uid));
+    mv(song.path, songDest, function (err) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(true);
+      }
+    });
+    mv(cover.path, coverDest, function (err) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(true);
+      }
+    });
   });
 };
