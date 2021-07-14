@@ -43,7 +43,7 @@ async function startServer() {
   const db = await database.connect();
   await models.init(db);
 
-  app.listen(80, function (err) {
+  app.listen(80 || process.env.PORT, function (err) {
     if (err) {
       console.log(err);
     } else {
