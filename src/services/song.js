@@ -6,11 +6,11 @@ const fs = require("fs");
 const path = require("path");
 var mv = require("mv");
 
-cachegoose(mongoose, {
-  engine: "redis",
-  port: 6379,
-  host: "localhost",
-});
+// cachegoose(mongoose, {
+//   engine: "redis",
+//   port: 6379,
+//   host: "localhost",
+// });
 
 module.exports.saveNew = (uid, title, artist, album) => {
   return new Promise((resolve, reject) => {
@@ -37,7 +37,6 @@ module.exports.searchDb = (searchString) => {
     const reg = new RegExp(searchString, "i");
     models.Song.find()
       .or([{ title: reg }, { artist: reg }, { album: reg }])
-      .cache(120)
       .exec(function (err, results) {
         if (err) {
           reject(err);
@@ -51,7 +50,6 @@ module.exports.searchDb = (searchString) => {
 module.exports.getSongDetails = (uid) => {
   return new Promise((resolve, reject) => {
     modelLoader.models.Song.findOne({ uid: uid })
-      .cache(3600)
       .then((song) => {
         try {
           Vibrant.from(__basedir + "/data/" + uid + "/cover.png").getPalette(
